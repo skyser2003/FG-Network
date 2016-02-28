@@ -26,3 +26,10 @@
 *.exe
 *.out
 *.app
+
+# Visual Studio
+**/[Dd]ebug/*
+**/[Rr]elease/*
+**/ipch/*
+*.opendb
+*.sdf
