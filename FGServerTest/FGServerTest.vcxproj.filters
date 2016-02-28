@@ -4,10 +4,21 @@
     <Filter Include="Main">
       <UniqueIdentifier>{2dbee2c5-8971-472c-a072-f9c729c2b393}</UniqueIdentifier>
     </Filter>
+    <Filter Include="PCH">
+      <UniqueIdentifier>{2dcff537-ae0e-42ff-a792-2ffe5ef7d0df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>PCH</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>PCH</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
