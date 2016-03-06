@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libFGServer", "libFGServer\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FGServerTest", "FGServerTest\FGServerTest.vcxproj", "{06441100-31AE-4ED6-91A2-D3EEFFB603DF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libFGClient", "libFGClient\libFGClient.vcxproj", "{D5031014-A03F-4DEB-ACB1-2D1327B98383}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,10 @@ Global
 		{06441100-31AE-4ED6-91A2-D3EEFFB603DF}.Debug|x64.Build.0 = Debug|x64
 		{06441100-31AE-4ED6-91A2-D3EEFFB603DF}.Release|x64.ActiveCfg = Release|x64
 		{06441100-31AE-4ED6-91A2-D3EEFFB603DF}.Release|x64.Build.0 = Release|x64
+		{D5031014-A03F-4DEB-ACB1-2D1327B98383}.Debug|x64.ActiveCfg = Debug|x64
+		{D5031014-A03F-4DEB-ACB1-2D1327B98383}.Debug|x64.Build.0 = Debug|x64
+		{D5031014-A03F-4DEB-ACB1-2D1327B98383}.Release|x64.ActiveCfg = Release|x64
+		{D5031014-A03F-4DEB-ACB1-2D1327B98383}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
