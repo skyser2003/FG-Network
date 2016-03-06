@@ -65,8 +65,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="IsPointer.h" />
+    <ClInclude Include="PointerDataType.h" />
+    <ClInclude Include="Property.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="VoidTemplate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp" />
