@@ -2,8 +2,6 @@
 
 #include "Property.h"
 
-using namespace FTL;
-
 namespace FG
 {
 	class Server
