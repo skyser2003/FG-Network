@@ -1,2 +1,2 @@
 # FG-Server
-General purpose TCP server in C++
+General purpose TCP client & server in C++
