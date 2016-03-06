@@ -1,10 +1,24 @@
 #pragma once
 
+#include "Property.h"
+
+using namespace FTL;
+
 namespace FG
 {
 	class Server
 	{
 	public:
+		FTL::Property<Server, boost::asio::io_service, false, true> IOService;
 
+		Server();
+		~Server();
+
+		void Init(int port);
+
+		void OnConnect();
+
+	private:
+		boost::asio::ip::tcp::acceptor acc;
 	};
 }
