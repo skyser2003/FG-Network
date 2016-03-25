@@ -13,6 +13,7 @@ namespace FG
 		~Server();
 
 		void Init(int port);
+		void Run();
 
 		void OnConnect();
 

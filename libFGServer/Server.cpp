@@ -20,9 +20,13 @@ namespace FG
 		acc.listen();
 	}
 
+	void Server::Run()
+	{
+		IOService.get().run();
+	}
+
 	void Server::OnConnect()
 	{
-		io_service serv;
 		tcp::socket socket(IOService.get());
 		acc.accept(socket);
 	}

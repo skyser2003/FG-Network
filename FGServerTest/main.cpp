@@ -8,5 +8,8 @@ using namespace std;
 
 int main()
 {
+	FG::Server server;
+	server.Run();
+
 	return 0;
 }
