@@ -33,6 +33,9 @@
     <ClInclude Include="VoidTemplate.h">
       <Filter>Extern\FTL</Filter>
     </ClInclude>
+    <ClInclude Include="Connection.h">
+      <Filter>Server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">
@@ -40,6 +43,9 @@
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>PCH</Filter>
+    </ClCompile>
+    <ClCompile Include="Connection.cpp">
+      <Filter>Server</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

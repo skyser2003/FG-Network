@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Property.h"
+#include "Connection.h"
 
 namespace FG
 {
@@ -13,9 +14,10 @@ namespace FG
 		~Server();
 
 		void Init(int port);
+		void Listen();
 		void Run();
 
-		void OnConnect();
+		void Accept(Connection::Pointer& conn);
 
 	private:
 		boost::asio::ip::tcp::acceptor acc;

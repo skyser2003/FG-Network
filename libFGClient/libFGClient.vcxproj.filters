@@ -7,6 +7,12 @@
     <Filter Include="Client">
       <UniqueIdentifier>{e758a1e8-624c-40f2-8822-41b95dcb6c2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Extern">
+      <UniqueIdentifier>{457e9fcb-64c1-4b3f-8ca1-ee84095d9bb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Extern\FTL">
+      <UniqueIdentifier>{cf76b9bc-c238-4603-83f8-bf091c40def5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -14,6 +20,18 @@
     </ClInclude>
     <ClInclude Include="Client.h">
       <Filter>Client</Filter>
+    </ClInclude>
+    <ClInclude Include="PointerDataType.h">
+      <Filter>Extern\FTL</Filter>
+    </ClInclude>
+    <ClInclude Include="Property.h">
+      <Filter>Extern\FTL</Filter>
+    </ClInclude>
+    <ClInclude Include="VoidTemplate.h">
+      <Filter>Extern\FTL</Filter>
+    </ClInclude>
+    <ClInclude Include="IsPointer.h">
+      <Filter>Extern\FTL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
