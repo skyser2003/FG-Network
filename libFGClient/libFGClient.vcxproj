@@ -68,11 +68,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Client.h" />
-    <ClInclude Include="IsPointer.h" />
-    <ClInclude Include="PointerDataType.h" />
-    <ClInclude Include="Property.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="VoidTemplate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />

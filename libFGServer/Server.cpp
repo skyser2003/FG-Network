@@ -8,7 +8,7 @@ using namespace boost::asio::ip;
 
 namespace FG
 {
-	Server::Server() : acc(IOService.get())
+	Server::Server() : acc(ioService)
 	{
 	}
 
@@ -33,12 +33,12 @@ namespace FG
 
 	void Server::Run()
 	{
-		IOService.get().run();
+		ioService.run();
 	}
 
 	void Server::Accept(Connection::Pointer& conn)
 	{
-		tcp::socket socket(IOService.get());
+		tcp::socket socket(ioService);
 		acc.accept(socket);
 	}
 }

@@ -8,6 +8,6 @@ namespace FG
 {
 	void Client::Init(std::string ip, int port)
 	{
-		tcp::resolver resolver(IOService.get());
+		tcp::resolver resolver(ioService);
 	}
 }

@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Property.h"
-
 namespace FG
 {
 	class Connection : public std::enable_shared_from_this<Connection>
