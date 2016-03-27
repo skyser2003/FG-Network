@@ -26,6 +26,9 @@ int main()
 	FG::Client client;
 	client.Init("localhost", 80);
 
+	FG::Client client2;
+	client2.Init("localhost", 80);
+
 	system("pause");
 	return 0;
 }

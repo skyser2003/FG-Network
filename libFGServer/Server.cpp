@@ -28,12 +28,7 @@ namespace FG
 	{
 		acc.listen();
 
-		Connection::Pointer conn = Connection::create(acc.get_io_service());
-
-		acc.async_accept(
-			conn->GetSocket(),
-			boost::bind(&Server::Accept, this, conn)
-			);
+		NewAccept();
 	}
 
 	void Server::Run()
@@ -41,8 +36,20 @@ namespace FG
 		ioService.run();
 	}
 
-	void Server::Accept(Connection::Pointer& conn)
+	void Server::HandleAccept(Connection::Pointer& conn)
 	{
 		conn->Start();
+
+		NewAccept();
+	}
+
+	void Server::NewAccept()
+	{
+		Connection::Pointer newConn = Connection::create(acc.get_io_service());
+
+		acc.async_accept(
+			newConn->GetSocket(),
+			boost::bind(&Server::HandleAccept, this, newConn)
+			);
 	}
 }

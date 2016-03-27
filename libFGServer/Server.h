@@ -14,9 +14,11 @@ namespace FG
 		void Listen();
 		void Run();
 
-		void Accept(Connection::Pointer& conn);
+		void HandleAccept(Connection::Pointer& conn);
 
 	private:
+		void NewAccept();
+
 		boost::asio::io_service ioService;
 		boost::asio::ip::tcp::acceptor acc;
 	};
