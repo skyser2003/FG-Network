@@ -1,5 +1,9 @@
 #pragma once
 
+#include <memory>
+
+#include <boost/asio.hpp>
+
 namespace FG
 {
 	class Connection : public std::enable_shared_from_this<Connection>
