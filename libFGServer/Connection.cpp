@@ -16,7 +16,7 @@ namespace FG
 		return buf;
 	}
 
-	Connection::Connection(boost::asio::io_service& ioService)// : Socket(ioService)
+	Connection::Connection(boost::asio::io_service& ioService) : socket(ioService)
 	{
 	}
 
@@ -29,14 +29,19 @@ namespace FG
 	{
 		message = make_daytime_string();
 
-// 		async_write(Socket.get(),
-// 			boost::asio::buffer(message),
-// 			boost::bind(&Connection::HandleWrite, shared_from_this())
-// 			);
+		async_write(socket,
+			boost::asio::buffer(message),
+			boost::bind(&Connection::HandleWrite, shared_from_this())
+			);
 	}
 
 	void Connection::HandleWrite()
 	{
 
+	}
+
+	Connection::Socket& Connection::GetSocket()
+	{
+		return socket;
 	}
 }

@@ -25,10 +25,10 @@ namespace FG
 	{
 		Connection::Pointer conn = Connection::create(acc.get_io_service());
 
-// 		acc.async_accept(
-// 			conn->Socket.get(),
-// 			boost::bind(&Server::Accept, this, conn)
-// 			);
+		acc.async_accept(
+			conn->GetSocket(),
+			boost::bind(&Server::Accept, this, conn)
+			);
 	}
 
 	void Server::Run()

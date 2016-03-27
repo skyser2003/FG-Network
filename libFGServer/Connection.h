@@ -6,13 +6,12 @@ namespace FG
 	{
 	public:
 		typedef std::shared_ptr<Connection> Pointer;
+		typedef boost::asio::ip::tcp::socket Socket;
 
 		static Pointer create(boost::asio::io_service& ioService)
 		{
 			return Pointer(new Connection(ioService));
 		}
-
-//		FTL::Property<Connection, boost::asio::ip::tcp::socket, false, true> Socket;
 
 		Connection(boost::asio::io_service& ioService);
 		~Connection();
@@ -20,7 +19,11 @@ namespace FG
 		void Start();
 		void HandleWrite();
 
+		Socket& GetSocket();
+
 	private:
+		Socket socket;
+
 		std::string message;
 	};
 }
