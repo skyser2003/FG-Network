@@ -16,13 +16,18 @@ namespace FG
 	{
 	}
 
-	void Server::Init(int port)
+	void Server::Bind(int port)
 	{
-		acc.bind(tcp::endpoint(tcp::v4(), port));
+		auto endpoint = tcp::endpoint(tcp::v4(), port);
+
+		acc.open(endpoint.protocol());
+		acc.bind(endpoint);
 	}
 
 	void Server::Listen()
 	{
+		acc.listen();
+
 		Connection::Pointer conn = Connection::create(acc.get_io_service());
 
 		acc.async_accept(
@@ -38,7 +43,6 @@ namespace FG
 
 	void Server::Accept(Connection::Pointer& conn)
 	{
-		tcp::socket socket(ioService);
-		acc.accept(socket);
+		conn->Start();
 	}
 }

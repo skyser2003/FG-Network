@@ -71,6 +71,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ProjectReference Include="..\libFGClient\libFGClient.vcxproj">
+      <Project>{d5031014-a03f-4deb-acb1-2d1327b98383}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\libFGServer\libFGServer.vcxproj">
       <Project>{7e553c85-af77-422b-ad93-083c54bd34a3}</Project>
     </ProjectReference>

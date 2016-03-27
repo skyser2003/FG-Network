@@ -10,7 +10,7 @@ namespace FG
 		Server();
 		~Server();
 
-		void Init(int port);
+		void Bind(int port);
 		void Listen();
 		void Run();
 
