@@ -40,7 +40,17 @@ namespace FG
 	{
 		conn->Start();
 
+		if (acceptHandler != nullptr)
+		{
+			acceptHandler(conn->GetSocket());
+		}
+
 		NewAccept();
+	}
+
+	void Server::SetAcceptHandler(AcceptHandler acceptHandler)
+	{
+		this->acceptHandler = acceptHandler;
 	}
 
 	void Server::NewAccept()
