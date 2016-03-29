@@ -38,12 +38,12 @@ namespace FG
 
 	void Server::HandleAccept(Connection::Pointer& conn)
 	{
-		conn->Start();
-
 		if (acceptHandler != nullptr)
 		{
 			acceptHandler(conn->GetSocket());
 		}
+
+		conn->BeginReceive(receiveHandler);
 
 		NewAccept();
 	}
@@ -51,6 +51,11 @@ namespace FG
 	void Server::SetAcceptHandler(AcceptHandler acceptHandler)
 	{
 		this->acceptHandler = acceptHandler;
+	}
+
+	void Server::SetReceiveHandler(ReceiveHandler receiveHandler)
+	{
+		this->receiveHandler = receiveHandler;
 	}
 
 	void Server::NewAccept()

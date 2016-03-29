@@ -25,19 +25,35 @@ namespace FG
 
 	}
 
-	void Connection::Start()
+	void Connection::Send(int size, char* data)
 	{
-		message = make_daytime_string();
-
 		async_write(socket,
-			boost::asio::buffer(message),
+			boost::asio::buffer(data, size),
 			boost::bind(&Connection::HandleWrite, shared_from_this())
+			);
+	}
+
+	void Connection::BeginReceive(ReceiveHandler receiveHandler)
+	{
+		this->receiveHandler = receiveHandler;
+
+		socket.async_receive(
+			boost::asio::buffer(buffer),
+			std::bind(&Connection::HandleReceive, shared_from_this(), std::placeholders::_1, std::placeholders::_2)
 			);
 	}
 
 	void Connection::HandleWrite()
 	{
 
+	}
+
+	void Connection::HandleReceive(const boost::system::error_code& error, std::size_t bytes_transferred)
+	{
+		if (receiveHandler != nullptr)
+		{
+			receiveHandler(bytes_transferred, buffer);
+		}
 	}
 
 	Connection::Socket& Connection::GetSocket()

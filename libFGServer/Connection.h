@@ -12,6 +12,8 @@ namespace FG
 		typedef std::shared_ptr<Connection> Pointer;
 		typedef boost::asio::ip::tcp::socket Socket;
 
+		using ReceiveHandler = std::function<void(int, char*)>;
+
 		static Pointer create(boost::asio::io_service& ioService)
 		{
 			return Pointer(new Connection(ioService));
@@ -20,14 +22,18 @@ namespace FG
 		Connection(boost::asio::io_service& ioService);
 		~Connection();
 
-		void Start();
+		void Send(int size, char* data);
+		void BeginReceive(ReceiveHandler receiveHandler);
+
 		void HandleWrite();
+		void HandleReceive(const boost::system::error_code& error, std::size_t bytes_transferred);
 
 		Socket& GetSocket();
 
 	private:
 		Socket socket;
 
-		std::string message;
+		ReceiveHandler receiveHandler;
+		char buffer[255];
 	};
 }
