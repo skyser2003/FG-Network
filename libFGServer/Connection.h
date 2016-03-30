@@ -1,6 +1,7 @@
 #pragma once
 
 #include <memory>
+#include <atomic>
 
 #include <boost/asio.hpp>
 
@@ -23,14 +24,20 @@ namespace FG
 		~Connection();
 
 		void Send(int size, char* data);
-		void BeginReceive(ReceiveHandler receiveHandler);
+		void BeginReceive();
 
 		void HandleWrite();
 		void HandleReceive(const boost::system::error_code& error, std::size_t bytes_transferred);
 
+		void SetReceiveHandler(ReceiveHandler receiveHandler);
+
 		Socket& GetSocket();
+		int GetID() const;
 
 	private:
+		static std::atomic<int> nextID;
+
+		int id;
 		Socket socket;
 
 		ReceiveHandler receiveHandler;

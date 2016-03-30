@@ -8,6 +8,8 @@ using namespace boost::asio;
 
 namespace FG
 {
+	atomic<int> Connection::nextID = 0;
+
 	std::string make_daytime_string()
 	{
 		time_t now = time(0);
@@ -16,7 +18,7 @@ namespace FG
 		return buf;
 	}
 
-	Connection::Connection(boost::asio::io_service& ioService) : socket(ioService)
+	Connection::Connection(boost::asio::io_service& ioService) : socket(ioService), id(nextID++)
 	{
 	}
 
@@ -33,10 +35,8 @@ namespace FG
 			);
 	}
 
-	void Connection::BeginReceive(ReceiveHandler receiveHandler)
+	void Connection::BeginReceive()
 	{
-		this->receiveHandler = receiveHandler;
-
 		socket.async_receive(
 			boost::asio::buffer(buffer),
 			std::bind(&Connection::HandleReceive, shared_from_this(), std::placeholders::_1, std::placeholders::_2)
@@ -56,8 +56,18 @@ namespace FG
 		}
 	}
 
+	void Connection::SetReceiveHandler(ReceiveHandler receiveHandler)
+	{
+		this->receiveHandler = receiveHandler;
+	}
+
 	Connection::Socket& Connection::GetSocket()
 	{
 		return socket;
+	}
+
+	int Connection::GetID() const
+	{
+		return id;
 	}
 }

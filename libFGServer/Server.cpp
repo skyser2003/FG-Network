@@ -40,10 +40,10 @@ namespace FG
 	{
 		if (acceptHandler != nullptr)
 		{
-			acceptHandler(conn->GetSocket());
+			acceptHandler(conn);
 		}
 
-		conn->BeginReceive(receiveHandler);
+		conn->BeginReceive();
 
 		NewAccept();
 	}
@@ -51,11 +51,6 @@ namespace FG
 	void Server::SetAcceptHandler(AcceptHandler acceptHandler)
 	{
 		this->acceptHandler = acceptHandler;
-	}
-
-	void Server::SetReceiveHandler(ReceiveHandler receiveHandler)
-	{
-		this->receiveHandler = receiveHandler;
 	}
 
 	void Server::NewAccept()

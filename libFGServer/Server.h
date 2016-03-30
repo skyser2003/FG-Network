@@ -9,8 +9,7 @@ namespace FG
 	class Server
 	{
 	public:
-		using AcceptHandler = std::function<void(boost::asio::ip::tcp::socket&)>;
-		using ReceiveHandler = Connection::ReceiveHandler;
+		using AcceptHandler = std::function<void(Connection::Pointer&)>;
 
 		Server();
 		~Server();
@@ -22,7 +21,6 @@ namespace FG
 		void HandleAccept(Connection::Pointer& conn);
 
 		void SetAcceptHandler(AcceptHandler acceptHandler);
-		void SetReceiveHandler(ReceiveHandler receiveHandler);
 
 	private:
 		void NewAccept();
@@ -31,6 +29,5 @@ namespace FG
 		boost::asio::ip::tcp::acceptor acc;
 
 		AcceptHandler acceptHandler;
-		ReceiveHandler receiveHandler;
 	};
 }
