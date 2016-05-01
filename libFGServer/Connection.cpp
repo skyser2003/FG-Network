@@ -54,6 +54,8 @@ namespace FG
 		{
 			receiveHandler(bytes_transferred, buffer);
 		}
+
+		BeginReceive();
 	}
 
 	void Connection::SetReceiveHandler(ReceiveHandler receiveHandler)
