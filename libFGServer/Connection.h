@@ -23,7 +23,7 @@ namespace FG
 		Connection(boost::asio::io_service& ioService);
 		~Connection();
 
-		void Send(int size, char* data);
+		void Send(int size, const char* data);
 		void BeginReceive();
 
 		void HandleWrite();

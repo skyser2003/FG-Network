@@ -27,7 +27,7 @@ namespace FG
 
 	}
 
-	void Connection::Send(int size, char* data)
+	void Connection::Send(int size, const char* data)
 	{
 		async_write(socket,
 			boost::asio::buffer(data, size),
