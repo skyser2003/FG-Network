@@ -14,6 +14,7 @@ namespace FG
 		typedef boost::asio::ip::tcp::socket Socket;
 
 		using ReceiveHandler = std::function<void(int, char*)>;
+		using DisconnectHandler = std::function<void(void)>;
 
 		static Pointer create(boost::asio::io_service& ioService)
 		{
@@ -30,11 +31,14 @@ namespace FG
 		void HandleReceive(const boost::system::error_code& error, std::size_t bytes_transferred);
 
 		void SetReceiveHandler(ReceiveHandler receiveHandler);
+		void SetDisconnectHandler(DisconnectHandler disconnectHandler);
 
 		Socket& GetSocket();
 		int GetID() const;
 
 	private:
+		void HandleDisconnect();
+
 		static std::atomic<int> nextID;
 
 		int id;
@@ -42,5 +46,7 @@ namespace FG
 
 		ReceiveHandler receiveHandler;
 		char buffer[255];
+
+		DisconnectHandler disconnectHandler;
 	};
 }
