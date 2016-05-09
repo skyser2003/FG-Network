@@ -7,27 +7,30 @@
     <Filter Include="PCH">
       <UniqueIdentifier>{1ff23a9e-5593-4a34-84df-9f0e89d2e3ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Connection">
+      <UniqueIdentifier>{f577f295-6017-4338-84cf-4ef9a8ae9f04}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Server.h">
+    <ClInclude Include="include\Connection.h">
+      <Filter>Connection</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Server.h">
       <Filter>Server</Filter>
     </ClInclude>
-    <ClInclude Include="stdafx.h">
+    <ClInclude Include="pch\stdafx.h">
       <Filter>PCH</Filter>
-    </ClInclude>
-    <ClInclude Include="Connection.h">
-      <Filter>Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Server.cpp">
-      <Filter>Server</Filter>
-    </ClCompile>
-    <ClCompile Include="stdafx.cpp">
+    <ClCompile Include="pch\stdafx.cpp">
       <Filter>PCH</Filter>
     </ClCompile>
-    <ClCompile Include="Connection.cpp">
+    <ClCompile Include="src\Server.cpp">
       <Filter>Server</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Connection.cpp">
+      <Filter>Connection</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
