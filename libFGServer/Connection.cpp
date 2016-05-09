@@ -18,8 +18,9 @@ namespace FG
 		return buf;
 	}
 
-	Connection::Connection(boost::asio::io_service& ioService) : socket(ioService), id(nextID++)
+	Connection::Connection(boost::asio::io_service& ioService): socket(ioService), id(nextID++)
 	{
+		memset(buffer, 0, sizeof(buffer));
 	}
 
 	Connection::~Connection()

@@ -21,7 +21,7 @@ namespace FG
 			return Pointer(new Connection(ioService));
 		}
 
-		Connection(boost::asio::io_service& ioService);
+		explicit Connection(boost::asio::io_service& ioService);
 		~Connection();
 
 		void Send(int size, const char* data);
