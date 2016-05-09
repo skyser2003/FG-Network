@@ -9,18 +9,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Server.h">
-      <Filter>Server</Filter>
-    </ClInclude>
     <ClInclude Include="pch\stdafx.h">
       <Filter>PCH</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FGServer.h">
+      <Filter>Server</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch\stdafx.cpp">
       <Filter>PCH</Filter>
     </ClCompile>
-    <ClCompile Include="src\Server.cpp">
+    <ClCompile Include="src\FGServer.cpp">
       <Filter>Server</Filter>
     </ClCompile>
   </ItemGroup>

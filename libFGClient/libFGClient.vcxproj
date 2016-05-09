@@ -15,10 +15,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Client.cpp" />
+    <ClCompile Include="src\FGClient.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Client.h" />
+    <ClInclude Include="include\FGClient.h" />
     <ClInclude Include="pch\stdafx.h" />
   </ItemGroup>
   <ItemGroup>

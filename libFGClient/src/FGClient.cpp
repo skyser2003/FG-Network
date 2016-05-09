@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Client.h"
+#include "FGClient.h"
 
 using namespace boost::asio;
 using namespace boost::asio::ip;

@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\Server.h" />
+    <ClInclude Include="include\FGServer.h" />
     <ClInclude Include="pch\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
@@ -19,7 +19,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\Server.cpp" />
+    <ClCompile Include="src\FGServer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\libFGNetworkShared\libFGNetworkShared.vcxproj">

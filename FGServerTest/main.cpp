@@ -5,8 +5,8 @@
 #include <thread>
 using namespace std;
 
-#include "Server.h"
-#include "Client.h"
+#include "FGServer.h"
+#include "FGClient.h"
 
 int main()
 {

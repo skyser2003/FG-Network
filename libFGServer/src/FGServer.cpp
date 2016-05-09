@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "Server.h"
+#include "FGServer.h"
 
 #include "FGConnection.h"
 
