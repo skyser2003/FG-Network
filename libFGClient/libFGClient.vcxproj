@@ -21,6 +21,11 @@
     <ClInclude Include="include\Client.h" />
     <ClInclude Include="pch\stdafx.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\libFGNetworkShared\libFGNetworkShared.vcxproj">
+      <Project>{b4e8b4ee-15d7-4732-9a70-75b2ab59ccd2}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D5031014-A03F-4DEB-ACB1-2D1327B98383}</ProjectGuid>
     <RootNamespace>libFGClient</RootNamespace>
@@ -59,7 +64,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>C:\Projects\boost;include;pch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Projects\boost;include;pch;../libFGNetworkShared/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -70,7 +75,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>C:\Projects\boost;include;pch;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Projects\boost;include;pch;../libFGNetworkShared/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

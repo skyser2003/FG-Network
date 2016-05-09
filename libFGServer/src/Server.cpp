@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Server.h"
 
-#include "Connection.h"
+#include "FGConnection.h"
 
 using namespace boost::asio;
 using namespace boost::asio::ip;
@@ -36,7 +36,7 @@ namespace FG
 		ioService.run();
 	}
 
-	void Server::HandleAccept(Connection::Pointer& conn)
+	void Server::HandleAccept(ConnectionPointer& conn)
 	{
 		if (acceptHandler != nullptr)
 		{
@@ -55,7 +55,7 @@ namespace FG
 
 	void Server::NewAccept()
 	{
-		Connection::Pointer newConn = Connection::create(acc.get_io_service());
+		ConnectionPointer newConn = Connection::create(acc.get_io_service());
 
 		acc.async_accept(
 			newConn->GetSocket(),

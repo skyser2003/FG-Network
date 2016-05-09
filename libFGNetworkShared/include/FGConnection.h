@@ -5,20 +5,21 @@
 
 #include <boost/asio.hpp>
 
+#include "FGNetworkSharedHelper.h"
+
 namespace FG
 {
 	class Connection : public std::enable_shared_from_this<Connection>
 	{
 	public:
-		typedef std::shared_ptr<Connection> Pointer;
 		typedef boost::asio::ip::tcp::socket Socket;
 
 		using ReceiveHandler = std::function<void(int, char*)>;
 		using DisconnectHandler = std::function<void(void)>;
 
-		static Pointer create(boost::asio::io_service& ioService)
+		static ConnectionPointer create(boost::asio::io_service& ioService)
 		{
-			return Pointer(new Connection(ioService));
+			return ConnectionPointer(new Connection(ioService));
 		}
 
 		explicit Connection(boost::asio::io_service& ioService);

@@ -1,15 +1,17 @@
 #pragma once
 
-#include "Connection.h"
-
 #include <functional>
+
+#include <boost/asio.hpp>
+
+#include "FGNetworkSharedHelper.h"
 
 namespace FG
 {
 	class Server
 	{
 	public:
-		using AcceptHandler = std::function<void(Connection::Pointer&)>;
+		using AcceptHandler = std::function<void(ConnectionPointer&)>;
 
 		Server();
 		~Server();
@@ -18,7 +20,7 @@ namespace FG
 		void Listen();
 		void Run();
 
-		void HandleAccept(Connection::Pointer& conn);
+		void HandleAccept(ConnectionPointer& conn);
 
 		void SetAcceptHandler(AcceptHandler acceptHandler);
 
