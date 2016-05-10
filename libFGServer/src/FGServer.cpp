@@ -18,10 +18,17 @@ namespace FG
 
 	void Server::Bind(int port)
 	{
+		boost::system::error_code ec;
+
 		auto endpoint = tcp::endpoint(tcp::v4(), port);
 
 		acc.open(endpoint.protocol());
-		acc.bind(endpoint);
+		acc.bind(endpoint, ec);
+		
+		if (ec == error::address_in_use)
+		{
+			// TODO
+		}
 	}
 
 	void Server::Listen()
