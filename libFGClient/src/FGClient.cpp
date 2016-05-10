@@ -1,38 +1,43 @@
 #include "stdafx.h"
 #include "FGClient.h"
 
+#include "FGConnection.h"
+
+using namespace std::placeholders;
+
 using namespace boost::asio;
 using namespace boost::asio::ip;
 
 namespace FG
 {
-	Client::Client() : socket(ioService)
+	Client::Client()
 	{
 
 	}
 
 	void Client::Init(std::string ip, int port)
 	{
-		tcp::resolver resolver(ioService);
+		endpoint.address(boost::asio::ip::address::from_string(ip));
+		endpoint.port(port);
+	}
 
-		tcp::resolver::query query(ip, std::to_string(port));
-		auto endpointIt = resolver.resolve(query);
+	void Client::Connect()
+	{
+		ConnectionPointer newConn = Connection::create(ioService);
+		newConn->GetSocket().async_connect(endpoint, std::bind(&Client::OnConnect, this, _1, newConn));
+	}
 
-		boost::asio::connect(socket, endpointIt);
+	void Client::SetConnectHandler(ConnectHandler connectHandler)
+	{
+		this->connectHandler = connectHandler;
+	}
 
-		while (true)
+	void Client::OnConnect(const boost::system::error_code& error, ConnectionPointer conn)
+	{
+		if (connectHandler != nullptr)
 		{
-			boost::array<char, 128> buf;
-			boost::system::error_code error;
-
-			size_t len = socket.read_some(boost::asio::buffer(buf), error);
-
-			if (error == boost::asio::error::eof)
-				break; // Connection closed cleanly by peer.
-			else if (error)
-				throw boost::system::system_error(error); // Some other error.
-
-			std::cout.write(buf.data(), len);
+			connectHandler(conn);
+			conn->BeginReceive();
 		}
 	}
 }
