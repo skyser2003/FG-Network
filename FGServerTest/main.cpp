@@ -11,23 +11,42 @@ using namespace std;
 int main()
 {
 	FG::Server server;
-	server.Bind(80);
-	server.Listen();
 
 	thread serverThread([&server]()
 	{
+		FG::ConnectionPointer conn = nullptr;
+
+		server.SetAcceptHandler([](auto& newConn)
+		{
+			conn = newConn;
+		});
+
+		server.Bind(80);
+		server.Listen();
+
 		while (true)
 		{
 			server.Run();
 		}
 	});
+
 	serverThread.detach();
 
-	FG::Client client;
-	client.Init("localhost", 80);
-
+	FG::Client client1;
 	FG::Client client2;
-	client2.Init("localhost", 80);
+
+	client1.SetConnectHandler([](auto& conn)
+	{
+		cout << "client1 connected";
+	});
+
+	client2.SetConnectHandler([](auto& conn)
+	{
+		cout << "client2 connected";
+	});
+
+	client1.Connect("localhost", 80);
+	client2.Connect("localhost", 80);
 
 	system("pause");
 	return 0;

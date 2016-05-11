@@ -3,6 +3,8 @@
 
 #include "FGConnection.h"
 
+#include <boost/bind.hpp>
+
 using namespace std::placeholders;
 
 using namespace boost::asio;
@@ -15,16 +17,18 @@ namespace FG
 
 	}
 
-	void Client::Init(std::string ip, int port)
+	void Client::Connect(const std::string& ip, int port)
 	{
-		endpoint.address(boost::asio::ip::address::from_string(ip));
-		endpoint.port(port);
-	}
+		tcp::resolver resolver(ioService);
+		tcp::resolver::query query(ip, std::to_string(port));
 
-	void Client::Connect()
-	{
-		ConnectionPointer newConn = Connection::create(ioService);
-		newConn->GetSocket().async_connect(endpoint, std::bind(&Client::OnConnect, this, _1, newConn));
+		auto endpointIt = resolver.resolve(query);
+
+		boost::system::error_code ec;
+
+		auto newConn = Connection::create(ioService);
+//		boost::asio::connect(newConn->GetSocket(), endpointIt, ec);
+ 		boost::asio::async_connect(newConn->GetSocket(), endpointIt, boost::bind(&Client::OnConnect, this, boost::placeholders::_1));
 	}
 
 	void Client::SetConnectHandler(ConnectHandler connectHandler)
@@ -32,12 +36,12 @@ namespace FG
 		this->connectHandler = connectHandler;
 	}
 
-	void Client::OnConnect(const boost::system::error_code& error, ConnectionPointer conn)
+	void Client::OnConnect(const boost::system::error_code& error)
 	{
 		if (connectHandler != nullptr)
 		{
-			connectHandler(conn);
-			conn->BeginReceive();
+//			connectHandler(conn);
+//			conn->BeginReceive();
 		}
 	}
 }

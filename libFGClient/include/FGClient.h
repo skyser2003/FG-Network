@@ -15,16 +15,14 @@ namespace FG
 
 		Client();
 
-		void Init(std::string ip, int port);
-		void Connect();
+		void Connect(const std::string& ip, int port);
 
 		void SetConnectHandler(ConnectHandler connectHandler);
 
 	private:
-		void OnConnect(const boost::system::error_code& error, ConnectionPointer conn);
+		void OnConnect(const boost::system::error_code& error);
 
 		boost::asio::io_service ioService;
-		boost::asio::ip::tcp::endpoint endpoint;
 
 		ConnectHandler connectHandler;
 	};
