@@ -3,18 +3,21 @@
 
 #include "FGConnection.h"
 
-#include <boost/bind.hpp>
-
-using namespace std::placeholders;
-
 using namespace boost::asio;
 using namespace boost::asio::ip;
+
+using namespace std::placeholders;
 
 namespace FG
 {
 	Client::Client()
 	{
 
+	}
+
+	void Client::Run()
+	{
+		ioService.run();
 	}
 
 	void Client::Connect(const std::string& ip, int port)
@@ -27,8 +30,7 @@ namespace FG
 		boost::system::error_code ec;
 
 		auto newConn = Connection::create(ioService);
-//		boost::asio::connect(newConn->GetSocket(), endpointIt, ec);
- 		boost::asio::async_connect(newConn->GetSocket(), endpointIt, boost::bind(&Client::OnConnect, this, boost::placeholders::_1));
+		boost::asio::async_connect(newConn->GetSocket(), endpointIt, std::bind(&Client::OnConnect, this, newConn, _1, _2));
 	}
 
 	void Client::SetConnectHandler(ConnectHandler connectHandler)
@@ -36,12 +38,12 @@ namespace FG
 		this->connectHandler = connectHandler;
 	}
 
-	void Client::OnConnect(const boost::system::error_code& error)
+	void Client::OnConnect(ConnectionPointer conn, const boost::system::error_code& error, tcp::resolver::iterator it)
 	{
 		if (connectHandler != nullptr)
 		{
-//			connectHandler(conn);
-//			conn->BeginReceive();
+			connectHandler(conn);
+			conn->BeginReceive();
 		}
 	}
 }

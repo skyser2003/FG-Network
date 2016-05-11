@@ -18,7 +18,7 @@ int main()
 
 		server.SetAcceptHandler([](auto& newConn)
 		{
-			conn = newConn;
+			cout << "boo" << endl;
 		});
 
 		server.Bind(80);
@@ -48,6 +48,14 @@ int main()
 	client1.Connect("localhost", 80);
 	client2.Connect("localhost", 80);
 
-	system("pause");
+	while (true)
+	{
+		client1.Run();
+		client2.Run();
+
+		Sleep(1000);
+		cout << "loop" << endl;
+	}
+
 	return 0;
 }
