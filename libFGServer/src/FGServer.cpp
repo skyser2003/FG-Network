@@ -40,7 +40,7 @@ namespace FG
 
 	void Server::Run()
 	{
-		ioService.run();
+		ioService.poll();
 	}
 
 	void Server::HandleAccept(ConnectionPointer& conn)

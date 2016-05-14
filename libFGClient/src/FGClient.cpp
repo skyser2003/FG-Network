@@ -17,7 +17,7 @@ namespace FG
 
 	void Client::Run()
 	{
-		ioService.run();
+		ioService.poll();
 	}
 
 	void Client::Connect(const std::string& ip, int port)
