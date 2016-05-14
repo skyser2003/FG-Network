@@ -27,35 +27,42 @@ int main()
 		while (true)
 		{
 			server.Run();
+			Sleep(1000);
 		}
 	});
 
 	serverThread.detach();
 
-	FG::Client client1;
-	FG::Client client2;
-
-	client1.SetConnectHandler([](auto& conn)
+	thread clientThread([]()
 	{
-		cout << "client1 connected";
+		FG::Client client1;
+		FG::Client client2;
+
+		client1.SetConnectHandler([](auto& conn)
+		{
+			cout << "client1 connected";
+		});
+
+		client2.SetConnectHandler([](auto& conn)
+		{
+			cout << "client2 connected";
+		});
+
+		client1.Connect("localhost", 80);
+		client2.Connect("localhost", 80);
+
+		while (true)
+		{
+			Sleep(1000);
+			client1.Run();
+			client2.Run();
+
+			cout << "loop" << endl;
+		}
 	});
 
-	client2.SetConnectHandler([](auto& conn)
-	{
-		cout << "client2 connected";
-	});
+	clientThread.detach();
 
-	client1.Connect("localhost", 80);
-	client2.Connect("localhost", 80);
-
-	while (true)
-	{
-		client1.Run();
-		client2.Run();
-
-		Sleep(1000);
-		cout << "loop" << endl;
-	}
-
+	system("pause");
 	return 0;
 }
