@@ -20,7 +20,14 @@ namespace FG
 	{
 		boost::system::error_code ec;
 
-		auto endpoint = tcp::endpoint(tcp::v4(), port);
+		auto endpoint = tcp::endpoint(tcp::v6(), port);
+
+		acc.set_option(ip::v6_only(false), ec);
+
+		if (ec.value() != 0)
+		{
+			// TODO
+		}
 
 		acc.open(endpoint.protocol());
 		acc.bind(endpoint, ec);
