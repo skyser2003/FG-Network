@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libFGServer", "libFGServer\libFGServer.vcxproj", "{7E553C85-AF77-422B-AD93-083C54BD34A3}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FGServerTest", "FGServerTest\FGServerTest.vcxproj", "{06441100-31AE-4ED6-91A2-D3EEFFB603DF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libFGClient", "libFGClient\libFGClient.vcxproj", "{D5031014-A03F-4DEB-ACB1-2D1327B98383}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libFGNetworkShared", "libFGNetworkShared\libFGNetworkShared.vcxproj", "{B4E8B4EE-15D7-4732-9A70-75B2AB59CCD2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D5031014-A03F-4DEB-ACB1-2D1327B98383}.Debug|x64.Build.0 = Debug|x64
 		{D5031014-A03F-4DEB-ACB1-2D1327B98383}.Release|x64.ActiveCfg = Release|x64
 		{D5031014-A03F-4DEB-ACB1-2D1327B98383}.Release|x64.Build.0 = Release|x64
+		{B4E8B4EE-15D7-4732-9A70-75B2AB59CCD2}.Debug|x64.ActiveCfg = Debug|x64
+		{B4E8B4EE-15D7-4732-9A70-75B2AB59CCD2}.Debug|x64.Build.0 = Debug|x64
+		{B4E8B4EE-15D7-4732-9A70-75B2AB59CCD2}.Release|x64.ActiveCfg = Release|x64
+		{B4E8B4EE-15D7-4732-9A70-75B2AB59CCD2}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
