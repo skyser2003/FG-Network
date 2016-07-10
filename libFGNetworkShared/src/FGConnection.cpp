@@ -6,7 +6,7 @@ using namespace boost::asio;
 
 namespace FG
 {
-	atomic<int> Connection::nextID = 0;
+	atomic<int> Connection::nextID(0);
 
 	Connection::Connection(boost::asio::io_service& ioService): socket(ioService), id(nextID++)
 	{
