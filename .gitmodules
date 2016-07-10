@@ -1,0 +1,3 @@
+[submodule "CMakeHelper"]
+	path = CMakeHelper
+	url = https://github.com/skyser2003/CMakeHelper
