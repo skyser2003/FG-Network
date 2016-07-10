@@ -34,3 +34,6 @@
 *.opendb
 *.sdf
 *.VC.db
+
+# Project specific
+build/
