@@ -73,7 +73,7 @@ namespace FG
 
 		acc.async_accept(
 			newConn->GetSocket(),
-			boost::bind(&Server::HandleAccept, this, newConn)
+			std::bind(&Server::HandleAccept, this, newConn)
 			);
 	}
 }

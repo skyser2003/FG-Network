@@ -22,7 +22,7 @@ namespace FG
 	{
 		async_write(socket,
 			boost::asio::buffer(data, size),
-			boost::bind(&Connection::HandleWrite, shared_from_this())
+			std::bind(&Connection::HandleWrite, shared_from_this())
 		);
 	}
 
